@@ -8,3 +8,4 @@ Changelog:
 {April 2017}
 - Ketika buka posting, otomatis cari related dan langsung create post.
 - Tambah suggestion search sekaligus menambahkan ke database stt2
+- proses posting tidak ditampilkan, bisa dicek pakai inspect element >> Network
