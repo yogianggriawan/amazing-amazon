@@ -1,13 +1,13 @@
-<span id="tt"></span> 
+<!-- <span id="tt"></span>  -->
 <?php
-
+include('amazon/amazon-suggestion.php');
 $apiurl = 'https://www.amazon.com/s/ref=lp_14284819011_ex_n_1?rh=n%3A13727921011%2Cn%3A%2113727922011%2Cn%3A14284819011&bbn=14284819011&ie=UTF-8&qid=1490572388&node=14284819011&k='.str_replace(' ', '+', get_search_query()).'&imgRes=0&imgCrop=true&carrier=&manufacturer=Xiaomi&model=HM+1SW&deviceType=A1MPSLFC7L5AFK&osVersion=18&deviceDensityClassification=320&deviceScreenLayout=SCREENLAYOUT_SIZE_NORMAL&serial=f35bb2ed&buildProduct=armani&buildFingerprint=Xiaomi%2Farmani%2Farmani%3A4.3%2FJLS36C%2FJHCMIBL50.0%3Auser%2Frelease-keys&simOperator=51010&phoneType=PHONE_TYPE_GSM&dataVersion=v0.2&cid=08e6b9c8bdfc91895ce634a035f3d00febd36433&format=json&cri=rrhMfPJfpl656svD&uaAppName=mShop&uaAppType=Application&uaAppVersion=10.5.0.100';
 $results = get_api($apiurl);
 if(isset($results->correctedCategoryResults->results->items)){
 	$i = 0;
 	$len = count($results->correctedCategoryResults->results->items);
 	$data_array = array();
-	if(is_user_logged_in()){
+	if(is_user_logged_in() OR !is_user_logged_in()){
 		echo '<form method="post" id="kotak">';
 	}
 	foreach($results->correctedCategoryResults->results->items as $data) {
@@ -51,13 +51,15 @@ if(isset($results->correctedCategoryResults->results->items)){
 					<p><?php
 				$descount = 1;
 				$plain = '';
-
-				foreach($data->description as $desc) {
+				if(isset($data->description)){
+					foreach($data->description as $desc) {
 					if($desc->style == 'PLAIN' && $descount <= 2){
 						echo $plain .= $desc->text.'</br>';
 						$descount++;
 					}
 				}
+				}
+				
 
 				?></p>
 				</div>
@@ -66,7 +68,7 @@ if(isset($results->correctedCategoryResults->results->items)){
 			</div><!-- .entry-content -->
 		</article>
 		<?php
-		if(is_user_logged_in()){
+		if(is_user_logged_in() OR !is_user_logged_in()){
 		?>
 		<input  type="hidden" id="asin<?php echo $i;?>" name="data[<?php echo $i;?>][asin]" value="<?php echo $asin;?>" />
 		<input  type="hidden" id="title_<?php echo $i;?>" name="data[<?php echo $i;?>][title]" value="<?php echo $title;?>" />
@@ -78,7 +80,7 @@ if(isset($results->correctedCategoryResults->results->items)){
 		}
 		$i++;
 	} 
-	if(is_user_logged_in()){
+	if(is_user_logged_in() OR !is_user_logged_in()){
 	?>
 			<input type="hidden" name="action" value="my_action" />
 		</form>
@@ -105,7 +107,7 @@ if(isset($results->correctedCategoryResults->results->items)){
 						$("#tt").html('Selesai!');
 					<?php }else{ ?>
 						//alert('<?php echo $i.' dari '.$len; ?>');
-						$("#tt").html('<br><img src="<?php echo admin_url( 'images/wpspin_light.gif' ); ?>"> Posting produk ke <?php echo $i.' dari '.$len; ?>... Maybe take a long time...</br>'); 
+						$("#tt").html('<br><img src="<?php echo admin_url( 'images/wpspin_light.gif' ); ?>"> Posting <?php echo $i.' produk '; ?>... Maybe take a long time...</br>'); 
 						                 jumlaharray = response;
                  var jumlahform = form.length+1;
 
