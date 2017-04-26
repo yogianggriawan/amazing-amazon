@@ -1,4 +1,5 @@
 <?php
+include('amazon-options.php');
 add_action( 'wp_ajax_my_action', 'my_action' );
 add_action( 'wp_ajax_nopriv_my_action', 'my_action' );
 add_action( 'wp_ajax_asinposter', 'asinposter' );

@@ -9,6 +9,7 @@
  * @since 1.0
  * @version 1.0
  */
+ $trackingid = get_option('tracking_id');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -63,7 +64,7 @@
 					<span class="size11 grey">(Min. Order: 1 Piece)</span>
 					<br><br>
 					<div style="text-align:right;">
-					<button onclick="window.open('https://www.amazon.com/gp/product/<?php echo get_post_meta($post->ID, "asin", $single = true); ?>/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=<?php echo get_post_meta($post->ID, "asin", $single = true); ?>&linkCode=as2&tag=mijong-20&linkId=c535a10d9f2e5680f211ecc31c5a8d4f','_blank')" class="redirect bookbtn mt1" title="View Detail">View Detail</button>
+					<button onclick="window.open('https://www.amazon.com/gp/product/<?php echo get_post_meta($post->ID, "asin", $single = true); ?>/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=<?php echo get_post_meta($post->ID, "asin", $single = true); ?>&linkCode=as2&tag=<?php echo $trackingid; ?>&linkId=c535a10d9f2e5680f211ecc31c5a8d4f','_blank')" class="redirect bookbtn mt1" title="View Detail">View Detail</button>
 				</div>
 				</div>
 					<div class="labelleft2">

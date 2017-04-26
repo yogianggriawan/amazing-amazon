@@ -1,5 +1,6 @@
 <!-- <span id="tt"></span>  -->
 <?php
+$trackingid = get_option('tracking_id');
 include('amazon/amazon-suggestion.php');
 $apiurl = 'https://www.amazon.com/s/ref=lp_14284819011_ex_n_1?rh=n%3A13727921011%2Cn%3A%2113727922011%2Cn%3A14284819011&bbn=14284819011&ie=UTF-8&qid=1490572388&node=14284819011&k='.str_replace(' ', '+', get_search_query()).'&imgRes=0&imgCrop=true&carrier=&manufacturer=Xiaomi&model=HM+1SW&deviceType=A1MPSLFC7L5AFK&osVersion=18&deviceDensityClassification=320&deviceScreenLayout=SCREENLAYOUT_SIZE_NORMAL&serial=f35bb2ed&buildProduct=armani&buildFingerprint=Xiaomi%2Farmani%2Farmani%3A4.3%2FJLS36C%2FJHCMIBL50.0%3Auser%2Frelease-keys&simOperator=51010&phoneType=PHONE_TYPE_GSM&dataVersion=v0.2&cid=08e6b9c8bdfc91895ce634a035f3d00febd36433&format=json&cri=rrhMfPJfpl656svD&uaAppName=mShop&uaAppType=Application&uaAppVersion=10.5.0.100';
 $results = get_api($apiurl);
@@ -44,7 +45,7 @@ if(isset($results->correctedCategoryResults->results->items)){
 				<span class="size11 grey">(Min. Order: 1 Piece)</span>
 				<br><br>
 				<div style="text-align:right;">
-				<button onclick="window.open('https://www.amazon.com/gp/product/<?php echo $asin; ?>/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=<?php echo $asin; ?>&linkCode=as2&tag=mijong-20&linkId=c535a10d9f2e5680f211ecc31c5a8d4f','_blank')" class="redirect bookbtn mt1" title="View Detail">View Detail</button>
+				<button onclick="window.open('https://www.amazon.com/gp/product/<?php echo $asin; ?>/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=<?php echo $asin; ?>&linkCode=as2&tag=<?php echo $trackingid; ?>&linkId=c535a10d9f2e5680f211ecc31c5a8d4f','_blank')" class="redirect bookbtn mt1" title="View Detail">View Detail</button>
 			</div>
 			</div>
 				<div class="labelleft2">
