@@ -5,6 +5,8 @@ fitur:
 2. search page for posting (if logged in) search-amazon.php
 
 Changelog:
+{26 April 2017}
+- Auto Sitemap, lebih ringan jika dibanding pake plugin
 {April 2017}
 - Ketika buka posting, otomatis cari related dan langsung create post.
 - Tambah suggestion search sekaligus menambahkan ke database stt2
